@@ -31,12 +31,14 @@
     })
     .then((willDelete) => {
       if (willDelete) {
+
         $.ajax({
             url: "../public/albums/"+id+"/delete",
             type: 'GET',
   		            success: function ()
                   {
                     swal("Il record è stato correttamente eliminato",{icon:"success"});
+
                       setTimeout(function(){ location.reload(); }, 500);
                   }
 
