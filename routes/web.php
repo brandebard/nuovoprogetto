@@ -31,6 +31,12 @@ Route::get('/photos', function() {
 return Photo::all();
 });
 
-Route::get('/users', function() {
-return User::all();
+Route::get('/users', 'UtentiController@show');
+Route::get('/users/{id}/delete', 'UtentiController@delete');
+Route::get('/users/{id}/edit', 'UtentiController@edit');
+Route::patch('/users/{id}', 'UtentiController@store');
+Route::post('/users/insert', 'UtentiController@insert');
+
+Route::get('/inserisciutente', function () {
+    return view('inserisciutente');
 });
