@@ -18,7 +18,7 @@ class CreateAlbumTable extends Migration
             $table->string('album_name',200);
             $table->string('description',128);
             $table->unsignedBigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->unisigned();
+            $table->foreign('user_id')->references('id')->on('users')->unisigned()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

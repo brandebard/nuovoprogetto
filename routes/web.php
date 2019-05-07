@@ -20,6 +20,10 @@ Route::get('/chart', function () {
 
 Route::get('/albums', 'AlbumsController@index');
 Route::get('/albums/{id}/delete', 'AlbumsController@delete');
+Route::get('/albums/{id}/edit', 'AlbumsController@edit');
+Route::patch('/albums/{id}', 'AlbumsController@store');
+
+
 Route::get('/chart', 'StatisticController@retriveStatistic');
 
 

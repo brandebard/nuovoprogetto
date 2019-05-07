@@ -6,39 +6,43 @@ use DB;
 
 class AlbumsController extends Controller
 {
+  
     public function index (Request $request) {
 
-      //return Album::all();
-
-      $sql = "SELECT * FROM albums where 1=1";
-
-      $where =[];
-
-      if ($request -> has('id'))
-      {
-        $where['id'] = $request->get('id');
-        $sql .= " AND id=:id" ;
-      }
-
-
-      if ($request -> has('album_name'))
-      {
-        $where['album_name'] = $request->get('album_name');
-        $sql .= " AND album_name=:album_name" ;
-
-      }
-      //dd($sql);
-      $albums = DB::select($sql, array_values($where));
-
-      return view('albums', ['albums' => $albums]);
+      $sql = "SELECT * FROM albums";
+      $albums = DB::select($sql);
+      return view('albums.albums', ['albums' => $albums]);
     }
+
+
 
     public function delete($id)
     {
       $sql = "DELETE from albums WHERE id= :id";
       DB::delete($sql,['id' => $id] );
       return redirect()->back();
+    }
 
+
+    public function edit($id)
+    {
+      $sql = "select id,album_name,description from albums WHERE id= :id";
+      $albums = DB::select($sql,['id' => $id] );
+      //dd($albums);
+        return view('albums.modifica')->with('albums',$albums[0]);
+    }
+
+
+    public function store($id, Request $req)
+    {
+      $data = request()->only(['name','description']);
+      $data['id'] = $id;
+
+      $sql = 'update albums set album_name=:name,description=:description';
+      $sql.=' where id=:id';
+
+      DB::update($sql, $data);
+      return redirect()->back();
     }
 
 }

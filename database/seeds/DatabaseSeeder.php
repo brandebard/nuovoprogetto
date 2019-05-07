@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Models\Album;
 use App\Models\Photo;
+use App\Models\Statistic;
+
 use App\User;
 
 class DatabaseSeeder extends Seeder
@@ -19,9 +21,12 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Album::truncate();
         Photo::truncate();
+        Statistic::truncate();
+
         $this->call(SeedUserTable::class);
         $this->call(SeedAlbumTable::class);
         $this->call(SeedPhotoTable::class);
+        $this->call(SeedStatisticTable::class);
 
     }
 }
