@@ -9,15 +9,14 @@ class UtentiController extends Controller
 {
     public function show()
     {
-      $sql='select * from users';
-      $users = DB::select($sql);
-      return view('users', ['users' => $users]);
+    //  $sql='select * from users';
+      $queryBuilder = DB::table('users')->orderBy('id','desc')->where('id','>',5)->get();
+      return view('users', ['users' => $queryBuilder]);
     }
 
     public function delete($id)
     {
-      $sql = "DELETE from users WHERE id= :id";
-      DB::delete($sql,['id' => $id] );
+      $sql = DB::table('users')->where('id',$id)->delete();
       return redirect()->back();
     }
 
@@ -36,8 +35,9 @@ class UtentiController extends Controller
 
       $sql = 'update users set name=:name,email=:email,oggetti_posseduti=:oggetti';
       $sql.=' where id=:id';
-
       DB::update($sql, $data);
+      $messaggio = $sql ? 'Album con id = '.$id.' aggiornato': 'Album non aggiornato';
+      session()->flash('message',$messaggio);
       return redirect('/users');
     }
 

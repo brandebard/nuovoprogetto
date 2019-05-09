@@ -2,6 +2,9 @@
 
 @section('content')
 <div>
+  @if (session()->has('message'))
+    <div class="alert alert-info">{{ session()->get('message') }}</div>
+  @endif
 <a style="float:left;" href="{{url('/inserisciutente')}}" class="btn btn-primary" style="float:right;color:white;margin-right:2%">Inserisci Utente</a>
 </div>
 <br><br>
@@ -59,6 +62,12 @@
 
 @section('footer')
 <script>
+$('document').ready(function()
+{
+$('div.alert').fadeOut(3000);
+})
+
+
   function deleteRecord(id)
   {
     swal({
