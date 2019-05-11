@@ -22,7 +22,7 @@ class UtentiController extends Controller
 
     public function edit($id)
     {
-      $sql = "select id,name,email,oggetti_posseduti from users WHERE id= :id";
+      $sql = "select id,name,email,oggetti_posseduti,album_thumb from users WHERE id= :id";
       $users = DB::select($sql,['id' => $id] );
       //dd($albums);
         return view('utentimodifica')->with('users',$users[0]);
@@ -30,16 +30,19 @@ class UtentiController extends Controller
 
     public function store($id, Request $req)
     {
+    $file =$req->file('album_thumb')->store('images');
+
+
       // update con QUERYBUILDER
     $sql =  DB::table('users')->where('id',$id)->update(
           [
             'name'=>request()->input('name'),
             'email'=>request()->input('email'),
-            'oggetti_posseduti'=>request()->input('oggetti')
+            'oggetti_posseduti'=>request()->input('oggetti'),
+            'album_thumb' => $file
           ]
 
         );
-
         // UPDATE CON METODO CLASSICO
 
       // $data = request()->only(['name','email','oggetti']);

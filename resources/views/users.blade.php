@@ -37,6 +37,9 @@
             <td>{{$user->email}}</td>
             <td>{{$user->created_at}}</td>
             <td>{{$user->oggetti_posseduti}}</td>
+            @if ($user->album_thumb)
+            <td style="text-align:center"><img width="15%" src="http://localhost/test/nuovoprogetto/storage/app/{{$user->album_thumb}}" alt=""/></td>
+            @endif
             <td><a onclick="editRecord({{$user->id}})" class="btn btn-primary" style="float:right;color:white;margin-right:2%">Update</a>
             </td>
             <td><a onclick="deleteRecord({{$user->id}})" class="btn btn-danger" style="float:right;color:white">Delete</a></td>

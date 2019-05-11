@@ -21,31 +21,53 @@ class AlbumsController extends Controller
 
     public function delete($id)
     {
-      $sql = "DELETE from albums WHERE id= :id";
-      DB::delete($sql,['id' => $id] );
+      // METODO CLASSICO
+      // $sql = "DELETE from albums WHERE id= :id";
+      // DB::delete($sql,['id' => $id] );
+
+      // METODO Eloquent
+      $queryBuilder = Album::where('id',$id)->delete();
+
+
       return redirect()->back();
     }
 
 
     public function edit($id)
     {
-      $sql = "select id,album_name,description from albums WHERE id= :id";
-      $albums = DB::select($sql,['id' => $id] );
+      // metodo classico
+      // $sql = "select id,album_name,description from albums WHERE id= :id";
+      // $albums = DB::select($sql,['id' => $id] );
       //dd($albums);
-        return view('albums.modifica')->with('albums',$albums[0]);
+      $queryBuilder = Album::where('id',$id)->get();
+
+        return view('albums.modifica')->with('albums',$queryBuilder[0]);
+
     }
 
 
     public function store($id, Request $req)
     {
-      $data = request()->only(['name','description']);
-      $data['id'] = $id;
+      //MEDOTO CLASSICO
 
-      $sql = 'update albums set album_name=:name,description=:description';
-      $sql.=' where id=:id';
+      // $data = request()->only(['name','description']);
+      // $data['id'] = $id;
+      //
+      // $sql = 'update albums set album_name=:name,description=:description';
+      // $sql.=' where id=:id';
+      //
+      // DB::update($sql, $data);
 
-      DB::update($sql, $data);
-      return redirect()->back();
+      // METODO Eloquent
+      $data = Album::where('id',$id)->update(
+          [
+            'album_name' => request()->input('name'),
+            'description' => request()->input('description'),
+          ]
+
+        );
+
+      return redirect('/albums');
     }
 
 }
