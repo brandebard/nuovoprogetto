@@ -30,8 +30,10 @@ class UtentiController extends Controller
 
     public function store($id, Request $req)
     {
+    if($req->hasFile('album_thumb'))
     $file =$req->file('album_thumb')->store('images');
-
+    else
+    $file="Nessuna Immagine";
 
       // update con QUERYBUILDER
     $sql =  DB::table('users')->where('id',$id)->update(

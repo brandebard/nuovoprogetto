@@ -10,7 +10,7 @@
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>Album ID</th>
+            <th>Id</th>
             <th>Nome Album</th>
             <th>Immagine</th>
           </tr>
