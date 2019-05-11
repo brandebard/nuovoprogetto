@@ -62,6 +62,7 @@ class UtentiController extends Controller
     {
 
       // INSERT CON QUERYBUILDER
+      $file =$req->file('album_thumb')->store('images');
 
       $datainsert = now();
       $sql = DB::table('users')->insert(
@@ -70,7 +71,8 @@ class UtentiController extends Controller
           'email'=>request()->input('email'),
           'password'=>request()->input('password'),
           'oggetti_posseduti'=>request()->input('oggetti'),
-          'created_at'=>$datainsert
+          'created_at'=>$datainsert,
+          'album_thumb' => $file
         ]
 
       );

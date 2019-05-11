@@ -8,9 +8,9 @@
       {{$album->id}} {{$album->album_name}}
        <!-- <a href="../public/albums/{{$album->id}}/delete" class="btn btn-danger" style="float:right;color:white">Delete</a> -->
        <!-- <a href="../public/albums/{{$album->id}}/edit" class="btn btn-primary" style="float:right;color:white;margin-right:2%">Update</a> -->
-
-      <a onclick="deleteRecord({{$album->id}})" class="btn btn-danger" style="float:right;color:white">Delete</a>
+      <a onclick="deleteRecord({{$album->id}})" class="btn btn-danger" style="float:right;color:white;margin-right:2%">Delete</a>
       <a onclick="editRecord({{$album->id}})" class="btn btn-primary" style="float:right;color:white;margin-right:2%">Update</a>
+      <a href="../public/albums/{{$album->id}}/images" class="btn btn-primary" style="float:right;color:white;margin-right:2%">View Images</a>
 
     </li>
 

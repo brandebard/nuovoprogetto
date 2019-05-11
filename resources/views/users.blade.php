@@ -13,9 +13,7 @@
     <i class="fas fa-table"></i>
     Elenco Utenti</div>
   <div class="card-body">
-
     <div class="table-responsive">
-
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
@@ -23,7 +21,7 @@
             <th>Nome</th>
             <th>Email</th>
             <th>Data Creazione</th>
-            <th>Contratti Creati</th>
+            <th>Contratti</th>
             <th>Modifica</th>
             <th>Elmina</th>
 
@@ -38,7 +36,7 @@
             <td>{{$user->created_at}}</td>
             <td>{{$user->oggetti_posseduti}}</td>
             @if ($user->album_thumb)
-            <td style="text-align:center"><img width="15%" src="http://localhost/test/nuovoprogetto/storage/app/{{$user->album_thumb}}" alt=""/></td>
+            <td style="text-align:center"><img width="50%" src="http://localhost/test/nuovoprogetto/storage/app/{{$user->album_thumb}}" alt=""/></td>
             @endif
             <td><a onclick="editRecord({{$user->id}})" class="btn btn-primary" style="float:right;color:white;margin-right:2%">Update</a>
             </td>

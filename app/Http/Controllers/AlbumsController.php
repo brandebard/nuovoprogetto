@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Album;
+use App\Models\Photo;
 use DB;
 
 class AlbumsController extends Controller
@@ -68,6 +69,13 @@ class AlbumsController extends Controller
         );
 
       return redirect('/albums');
+    }
+
+
+    public function viewImages($id)
+    {
+      $queryBuilder = Photo::where('album_id',$id)->get();
+      return view('viewimages', ['images' => $queryBuilder]);
     }
 
 }

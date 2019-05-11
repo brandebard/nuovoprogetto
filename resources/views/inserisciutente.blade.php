@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>Inserisci Utente</h1>
-  <form action="{{ url('/users/insert') }}" method="POST">
+  <form action="{{ url('/users/insert') }}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
       <div class="form-group">
         <label for="">Nome</label>
@@ -23,6 +23,11 @@
       <div class="form-group">
         <label for="">Contratti Creati</label>
         <input type="text" name="oggetti" id="oggetti" class="form-control" placeholder="Contratti Creati..."  />
+      </div>
+
+      <div class="form-group">
+        <label for="">Immagine Utente</label>
+        <input type="file" name="album_thumb" id="album_thumb" class="form-control" />
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>

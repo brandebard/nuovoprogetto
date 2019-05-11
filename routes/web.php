@@ -22,7 +22,7 @@ Route::get('/albums', 'AlbumsController@index');
 Route::get('/albums/{id}/delete', 'AlbumsController@delete');
 Route::get('/albums/{id}/edit', 'AlbumsController@edit');
 Route::patch('/albums/{id}', 'AlbumsController@store');
-
+Route::get('/albums/{id}/images', 'AlbumsController@viewImages');
 
 Route::get('/chart', 'StatisticController@retriveStatistic');
 
