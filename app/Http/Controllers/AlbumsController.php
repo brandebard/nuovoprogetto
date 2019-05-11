@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Album;
 use DB;
 
 class AlbumsController extends Controller
 {
-  
+
     public function index (Request $request) {
 
-      $sql = "SELECT * FROM albums";
-      $albums = DB::select($sql);
-      return view('albums.albums', ['albums' => $albums]);
+        $queryBuilder = Album::orderBy('id','DESC')->get();
+
+      // $sql = "SELECT * FROM albums";
+      // $albums = DB::select($sql);
+      return view('albums.albums', ['albums' => $queryBuilder]);
     }
 
 

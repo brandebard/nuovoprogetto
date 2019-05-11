@@ -40,3 +40,9 @@ Route::post('/users/insert', 'UtentiController@insert');
 Route::get('/inserisciutente', function () {
     return view('inserisciutente');
 });
+
+Route::get('usernoalbums',function(){
+return DB::table('users as u')->leftJoin('albums as a','a.user_id','u.id')
+->select('name','email','u.id')->whereNull('a.album_name')
+->get();
+});
