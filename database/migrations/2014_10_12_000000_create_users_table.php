@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('oggetti_posseduti')->default(10);
-            $table->string('album_thumb',128);            
+            $table->integer('oggetti_posseduti')->default(10)->nullable();
+            $table->string('album_thumb',128)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

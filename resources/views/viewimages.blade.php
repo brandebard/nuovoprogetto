@@ -13,6 +13,7 @@
             <th>Id</th>
             <th>Nome Album</th>
             <th>Immagine</th>
+            <th>Elimina Foto</th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
             <td>{{$image->id}}</td>
             <td>{{$image->name}}</td>
             <td><img width="20%" src="{{$image->img_path}}" /></td>
+            <td><a href="../{{$image->id}}/deletephotos" class="btn btn-danger" style="float:right;color:white">Delete</a></td>
           </tr>
         @endforeach
         </tbody>

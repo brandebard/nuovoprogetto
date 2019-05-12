@@ -78,4 +78,12 @@ class AlbumsController extends Controller
       return view('viewimages', ['images' => $queryBuilder]);
     }
 
+
+    public function deletephotos($id)
+    {
+      $queryBuilder = Photo::where('id',$id)->delete();
+      return redirect('albums');
+    }
+
+
 }
