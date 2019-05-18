@@ -14,8 +14,8 @@ class Controller extends BaseController
 
     public function visualizzaAlbum() {
 
-      $album = DB::select('select * from album');
-      return view('tables',['album'=>$album]);
+        $album = DB::select('select * from album');
+        return view('tables',['album'=>$album]);
 
     }
 

@@ -159,6 +159,11 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Utenti e Grafici</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('cercafilm')}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Cerca Film/Serie TV</span></a>
+      </li>
 
     </ul>
 

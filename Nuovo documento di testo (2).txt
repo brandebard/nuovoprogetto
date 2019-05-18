@@ -1,0 +1,81 @@
+- installare wamp
+- attivare i servizi
+- recarsi sul browser all'indirizzo "localhost"
+- recarsi su phpmyadmin
+- entrare con username root senza password
+- creare un nuovo db e impostare una password utente
+- entrare su mysql workbench con i nuovi parametri settando come default schema il nuovo db
+- scaricare e installare GIT
+- entrare nella cartella www di wamp e aprire una shell di GIT
+- digitare il comando composer create-project --prefer-dist laravel/laravel newproject. Partirà l'installazione di Laravel
+
+GIT
+
+creazione profilo:
+
+aprire una shell dalla cartella del progetto
+
+- $ git config --global user.name "USERNAME"
+- $ git config --global user.email "PROPRIA EMAIL"
+
+creare una repository (cartella da cui creare versioni)
+
+aprire una shell dalla cartella del progetto
+
+- $ git init (inizializzo repository)
+- $ git add . (aggiungo tutti i file della cartella). Se devo aggiungere solo un file $git add index.php
+- modifico ora un file all'interno della repository a cui ho aggiunto tutte le sue sottocartelle e file
+- $git status - la shell mi dirà che c'è un file che ha subito una modifica ma che nn è ancora stato committato
+- una volta salvato digitare $ git add filemodificato.php
+- $ git commit -m "prima versione" - committo le modifiche inserendo un testo di commento
+- $git status - la shell mi dirà che il file è stato regolarmente modificato
+- $git diff - se voglio visualizzare le differenze tra le varie versioni (devono non essere ancora committati, mi rivelerà anche la differenza
+tra il codice precedente e quello successivo)
+
+committare più file in contemporanea:
+- $git add . (aggiungerò le nuove versioni)
+- $ git commit -m "prima versione" - committo nuovamente le versioni
+- se digito $git commit -am "li ho modificati entrambi",  committo e aggiungo contemporaneamente (scorciatoia)
+
+tornare ad una versione precedente:
+
+- $git log - visualizzo le modifiche che sono state effettuate, prendo una come esempio
+
+- commit 7231317ccf79da45aa3ff07de56e49791fe49c8f
+Author: Lorenzo <fiorellomike@hotmail.it>
+Date:   Tue Apr 2 20:21:10 2019 +0200
+modifiche effettuate da Lorenzo Rossi
+
+- seleziono le prime 6-7 cifre del numero di modifica e digito $ git checkout 9187d74 resources/views/welcome.blade.php per tornare alla
+versione precedente.
+
+MIGRAZIONI
+per creare una migrazione creo le migrazioni una ad una, le compilo e lancio il comando "php artisan migrate".
+Se tutto va a buon fine le troverò sul mio database.
+
+- php artisan migrate = migrazione delle tabelle
+- php artisan migrate:rollback = drop delle tabelle
+- php artisan migrate:refresh = drop delle tabelle e update
+creazione migrazione
+- php artisan make:migration create_new_table --create nometabella   = creazione di una migrazione da compilare
+modifica creazione
+per modificare una tabella va installato il package "composer require doctrine/dbal
+- php artisan make:migration update_new_table --table nometabella   = creazione di una migrazione di modifica colonna
+
+foreign key = chiave di connessione tra due tabelle
+$table->unsignedBigInteger('album_id')->unsigned();
+
+$table->foreign('album_id')->references('id')->on('album')->unisigned();
+
+
+SEED
+con i seed è possibile inserire e modificare il contenuto delle tabelle
+per creare un seed dal composer digitare "php artisan make:seed NOME DEL SEED"
+all'interno del seed inseriamo i dati per dare a Laravel gli input da inserire, salviamo e torniamo sul composer digitando
+"php artisan db:seed --class = NOME DEL SEED"
+se tutto va a buon fine nel DB avremo tutti i dati random inseriti
+se non viene menzionata nessuna classe in fase di avvio del seed, laravel farà partire il seed di default DatabaseSeeder
+
+
+
+

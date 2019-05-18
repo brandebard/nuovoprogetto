@@ -60,24 +60,24 @@ class UtentiController extends Controller
     }
 
 
-    public function insert(Request $req)
+        public function insert(Request $req)
     {
 
-      // INSERT CON QUERYBUILDER
-      $file =$req->file('album_thumb')->store('images');
+        // INSERT CON QUERYBUILDER
+        $file =$req->file('album_thumb')->store('images');
 
-      $datainsert = now();
-      $sql = DB::table('users')->insert(
-        [
-          'name'=>request()->input('name'),
-          'email'=>request()->input('email'),
-          'password'=>request()->input('password'),
-          'oggetti_posseduti'=>request()->input('oggetti'),
-          'created_at'=>$datainsert,
-          'album_thumb' => $file
-        ]
+        $datainsert = now();
+        $sql = DB::table('users')->insert(
+            [
+                'name'=>request()->input('name'),
+                'email'=>request()->input('email'),
+                'password'=>request()->input('password'),
+                'oggetti_posseduti'=>request()->input('oggetti'),
+                'created_at'=>$datainsert,
+                'album_thumb' => $file
+            ]
 
-      );
+        );
 
 
       //INSERT CON METODO CLASSICO

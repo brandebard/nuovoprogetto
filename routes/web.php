@@ -4,6 +4,10 @@ use App\Models\Photo;
 use App\User;
 
 
+
+Route::get('/movies', 'MoviesController@findMovie');
+
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -11,6 +15,11 @@ Route::get('/', function () {
 Route::get('/tables', function () {
     return view('tables');
 });
+
+Route::get('/cercafilm', function () {
+    return view('cercafilm');
+});
+
 
 Route::get('/tables', 'Controller@visualizzaAlbum');
 
